@@ -6,7 +6,7 @@
 
 ![Results of the Minishell Tester](minishell_testresult.png)
 
-Link zu Tester: https://github.com/zstenger93/42_minishell_tester
+Link to Tester: https://github.com/zstenger93/42_minishell_tester
 
 # 
 
