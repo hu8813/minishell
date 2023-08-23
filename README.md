@@ -10,7 +10,7 @@ Link to Tester: https://github.com/zstenger93/42_minishell_tester
 
 ![Results of the Funcheck Malloc protection Tester](funcheck_result.png)
 
-Link to Tester: https://github.com/tmatis/ft_mallocator
+Link to Tester: https://github.com/tmatis/funcheck
 
 
 # 
