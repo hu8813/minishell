@@ -12,6 +12,8 @@
 
 #include "../inc/minishell.h"
 
+/* find the entry that contains the value of var in envp.
+	length of var (n) is needed to address the = after the variable name. */
 int	find_env_var_index(char *var, char **envp)
 {
 	int	i;
@@ -34,6 +36,10 @@ int	find_env_var_index(char *var, char **envp)
 	return (-1);
 }
 
+/* get environment variable by name.
+	the variable is looked up by index.
+	if not found, returns NULL.
+	if found, duplicates the string of the value and returns it. */
 char	*ft_getenv(char *var, char **envp)
 {
 	int			var_index;
@@ -55,6 +61,10 @@ char	*ft_getenv(char *var, char **envp)
 	return (NULL);
 }
 
+/* set value of variable var to value in envp.
+	first finds the variable.
+	if not found, adds a new entry to envp.
+	if found, replaces the entry after freeing the old entry. */
 char	**ft_setenv(char *var, char *value, char **envp)
 {
 	int		index;
@@ -84,6 +94,9 @@ char	**ft_setenv(char *var, char *value, char **envp)
 	return (envp);
 }
 
+/* this is the called builtin.
+	it takes multiple arguments, each one is a variable name.
+	it unsets all variables in the environment that are given. */
 int	ft_unset(t_cmd_set *p, char **args)
 {
 	int		i;
@@ -110,6 +123,11 @@ int	ft_unset(t_cmd_set *p, char **args)
 	return (0);
 }
 
+/* handle environment variables for heredoc.
+	it finds the end of the variable starting at str[*i].
+	it extracts the variable name, looks up the variable,
+    and outputs to the given fd.
+	it sets *i to the next character after the variable name */
 void	handle_env_vars(char *str, int *i, int fd[2], t_cmd_set *p)
 {
 	int		j;

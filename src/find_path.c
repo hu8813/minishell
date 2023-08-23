@@ -102,7 +102,7 @@ static DIR	*cmd_checks(t_list *cmd, char ***s, char *path, t_cmd_set *p)
 	}
 	else if (!dir)
 		process_checks(cmd, path, p, s);
-	free(path);
+	ft_free_all(path, NULL, NULL, NULL);
 	return (dir);
 }
 
@@ -116,8 +116,8 @@ void	find_cmd_path(t_cmd_set *p, t_list *cmd, char **s, char *path)
 
 	n = cmd->content;
 	path = ft_getenv("PATH", p->envp);
-	if (!path)
-		path = ft_strdup("");
+	if (!path || !*path)
+		path = ft_strdup("/");
 	dir = cmd_checks(cmd, &s, path, p);
 	if (!is_builtin(n) && n && n->args && dir && (n->args[0][0]
 		&& !ft_strchr("/.~", n->args[0][0])))

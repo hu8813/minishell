@@ -12,7 +12,6 @@
 
 # Check if readline library is installed on Linux or Mac, if not show message
 CURRENT_OS = $(uname -s)
-
 ifeq ($(CURRENT_OS), Linux)
 check_readline:
 	@test -f /usr/include/readline/readline.h || { echo "Readline library \ 

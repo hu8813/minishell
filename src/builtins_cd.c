@@ -44,6 +44,9 @@ void	ft_chdir(char ***av, char *home, char *oldpwd, t_cmd_set *p)
 		closedir(dir);
 }
 
+/* ensure that PWD and OLDPWD exist in the env.
+	first it gets the current WD and the variables.
+	if one of the variables is not set, it sets to the current directory */
 void	check_home_pwd_oldpwd(t_cmd_set *p)
 {
 	char	*pwd;
@@ -60,6 +63,12 @@ void	check_home_pwd_oldpwd(t_cmd_set *p)
 	ft_free_all(pwd, oldpwd, cwd, NULL);
 }
 
+/* this is the builtin that is actually called.
+	it verifies, that there is only one argument.
+	it ensures that PWD and OLDPWD are set in the env.
+	it ensures that at least "" home and oldpwd exist.
+	it uses ft_chdir to do the actual change of directory.
+	then it sets the PWD, frees memory, and returns. */
 int	ft_cd(t_cmd_set *p, char **cmd_args)
 {
 	char	*home;
