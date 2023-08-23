@@ -84,7 +84,7 @@ static char	*find_substitution(char first, char *tmp2, t_cmd_set *p)
 	}
 	else
 		var = ft_getenv(tmp2, p->envp);
-	free(tmp2);
+	ft_free_all(tmp2, NULL, NULL, NULL);
 	if (!var)
 		var = ft_strdup("");
 	return (var);

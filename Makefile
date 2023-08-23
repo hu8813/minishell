@@ -56,6 +56,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ)
 	@echo "Compiling minishell..." 
 	@$(CC) $(INCS) $(LIBS)  $(CFLAGS) $(OBJ) $(LIBFT) -lreadline -o $@
+	@echo "Done!"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo "Compiling $<..."
